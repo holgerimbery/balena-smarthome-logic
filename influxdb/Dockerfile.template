@@ -1,0 +1,9 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine
+
+RUN apk add influxdb
+# COPY influxdb.conf /etc/influxdb.conf
+# COPY types.db /etc/types.db
+# COPY collectd.auth /etc/collectd.auth
+RUN sed -i 's|/var/lib/influxdb|/data/influxdb|g' /etc/influxdb.conf
+
+CMD ["influxd"]

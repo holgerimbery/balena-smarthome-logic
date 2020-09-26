@@ -1,0 +1,57 @@
+version: '2'
+volumes:
+    grafana_etc:
+    grafana_usr:
+    grafana_var:
+    influx_data:
+    nodered_data:
+
+services:
+  #node-red
+  node-red:
+    build: ./node-red
+    volumes:
+      - 'nodered_data:/data'
+    restart: always
+    privileged: true
+    network_mode: host
+    labels:
+      io.balena.features.supervisor-api: '1'
+    cap_add:
+      - SYS_RAWIO
+    devices:
+      - "/dev/mem:/dev/mem"
+    #  - "/dev/gpiomem:/dev/gpiomem"
+      - "/dev/i2c-1:/dev/i2c-1"
+    ports:
+      - 1880:1880
+      - 2048:2048
+      - 2049:2049
+      - 1980:1980 
+      - 1400:1400
+  
+  #influxdb
+  influxdb:
+    restart: always
+    build: ./influxdb
+    volumes:
+      - 'influx_data:/data'
+    ports: 
+      - 8086:8086
+
+  #mqtt    
+  mqtt:
+    image: arm32v6/eclipse-mosquitto
+    ports:
+      - "1883:1883"
+    restart: always
+  
+  #grafana
+  grafana:
+    build: ./grafana
+    ports: 
+      - "3000:3000"
+    volumes:
+        - grafana_etc:/etc/grafana
+        - grafana_usr:/usr/share/grafana 
+        - grafana_var:/var/lib/grafana
