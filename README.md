@@ -1,9 +1,9 @@
-# nodered-influxdb-mqtt
+# smarthome logic stack with NodeRed and modules for google/alexa, Homematic/RaspiMatic and Amazon Polly
 ## Components
 - MQTT broker
 - InfluxDB
 - Node-Red [port: see below]
-    - google/alexa, Homematic CCU addons
+    - with smarthome related Nodes
 - Grafana
 
 
@@ -28,10 +28,21 @@ More information about using and setting environment variables can be found in
 the [balena docs](https://balena.io/docs/learn/manage/serv-vars/).
 
 
-## remarks on influxdb
+### preinstalled NodeRed Nodes
+       node-red-admin 
+       node-red-contrib-balena 
+       node-red-contrib-ccu 
+       node-red-contrib-combine 
+       node-red-contrib-sun-position 
+       node-red-node-email 
+       node-red-node-rbe 
+       node-red-contrib-influxdb 
+       node-red-contrib-alexa-smart-home 
+       node-red-contrib-sonospollytts 
+       node-red-dashboard 
+
+## Remarks on influxdb
 create databases via balena dashboard
 - connect to container
 - connect to influx (create database...)
-
-
 
