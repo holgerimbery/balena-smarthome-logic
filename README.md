@@ -1,4 +1,4 @@
-# smarthome logic stack with NodeRed and modules for google/alexa, Homematic/RaspiMatic and Amazon Polly
+# smarthome logic stack
 ## Components
 - MQTT broker
 - InfluxDB
