@@ -1,9 +1,9 @@
 FROM grafana/grafana-arm32v7-linux
 WORKDIR /usr/src/app
 
-#COPY ./conf/datasources.yml /etc/grafana/provisioning/datasources/
+COPY ./conf/datasources.yml /etc/grafana/provisioning/datasources/
 
-#COPY ./conf/dash* /etc/grafana/provisioning/dashboards/
+COPY ./conf/dash* /etc/grafana/provisioning/dashboards/
 
 EXPOSE 3000
 
